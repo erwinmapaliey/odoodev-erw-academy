@@ -9,7 +9,7 @@
    'depends'     : ['base'],
    
    'data': [
-      # 'security/ir.model.access.csv',
+      'security/ir.model.access.csv',
       'views/academy_menuitem.xml',
       'views/academy_course_view.xml',
    ],
