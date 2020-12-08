@@ -1,6 +1,6 @@
 {
    'name'        : "Academy",
-   'summary'     : """Custom Module for manage Course in Academy""",
+   'summary'     : """ERW Academy Module""",
    'description' : """Custom Module for manage Course in Academy""",
    'author'      : "Erwin Mapaliey",
    'website'     : "https://github.com/erwinmapaliey",
@@ -10,7 +10,7 @@
    
    'data': [
       # 'security/ir.model.access.csv',
-      # 'views/views.xml',
-      # 'views/templates.xml',
+      'views/academy_menuitem.xml',
+      'views/academy_course_view.xml',
    ],
 }
