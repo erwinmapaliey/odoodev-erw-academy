@@ -7,5 +7,5 @@ class Course(models.Model):
    _description = 'Data Course'
 
    name        = fields.Char( string = 'Course Name', required = 'True', help = "Fill course name..." )
-   description = fields.Char( string = 'Description' )
+   description = fields.Text( string = 'Description' )
    active      = fields.Boolean( string = 'Active', default = True )
