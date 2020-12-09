@@ -26,6 +26,7 @@
                <!-- Add your fields here -->
                <field name="name"/>
                <field name="description"/>
+               <field name="category_id"/>
                <field name="active"/>
             </tree>
          </field>
@@ -49,6 +50,7 @@
                         <group>
                            <group>
                               <field name="description"/>
+                              <field name="category_id"/>
                            </group>
                            <group>
                               <field name="active"/>
@@ -71,6 +73,11 @@
                <!-- Add your fields here -->
                <field name="name"/>
                <field name="description"/>
+
+               <group string="Group By Category">
+                  <filter name="group_by_category" string="Course Category" context="{'group_by': 'category_id'}"/>     
+               </group>
+            
             </search>
          </field>
       </record>

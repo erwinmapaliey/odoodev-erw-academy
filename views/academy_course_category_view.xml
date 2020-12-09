@@ -55,6 +55,11 @@
                            </group>
                         </group>
                      </page>
+                     <page string="Course List" name="course-list">
+                        <group>
+                           <field name="course_ids"/>
+                        </group>
+                     </page>
                   </notebook>
 
                </sheet>
