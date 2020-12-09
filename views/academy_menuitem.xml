@@ -9,5 +9,6 @@
 
       <!-- This Menu Item must have a parent and an action -->
       <menuitem id="academy_course_menu_act" name="Course List" parent="menu_academy_master_data" action="action_academy_course" sequence="1"/>
+      <menuitem id="academy_course_category_menu_act" name="Course Category" parent="menu_academy_master_data" action="action_academy_course_category" sequence="2"/>
    </data>
 </odoo>

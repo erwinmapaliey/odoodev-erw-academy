@@ -12,5 +12,6 @@
       'security/ir.model.access.csv',
       'views/academy_menuitem.xml',
       'views/academy_course_view.xml',
+      'views/academy_course_category_view.xml',
    ],
 }
