@@ -7,10 +7,11 @@
       <!-- This Menu Item Must have a parent -->
       <menuitem id="menu_academy_master_data" name="Master Data" parent="menu_academy" sequence="1"/>
 
-      <!-- This Menu Item must have a parent and an action -->
-      <menuitem id="academy_course_menu_act" name="Course List" parent="menu_academy_master_data" action="action_academy_course" sequence="1"/>
-      <!-- This Menu Item must have a parent and an action -->
-      <menuitem id="academy_course_category_menu_act" name="Course Category" parent="menu_academy_master_data" action="action_academy_course_category" sequence="2"/>
+      <!-- ACTION MENUS -->
+      <menuitem id="academy_course_menu_act" name="Course List" parent="menu_academy_master_data" action="action_academy_course" sequence="10"/>
+      <menuitem id="academy_course_category_menu_act" name="Course Category" parent="menu_academy_master_data" action="action_academy_course_category" sequence="20"/>
+      <menuitem id="academy_student_menu_act" name="Student" parent="menu_academy_master_data" action="academy_student_action" sequence="30"/>
+      <menuitem id="academy_instructor_menu_act" name="Instructor" parent="menu_academy_master_data" action="academy_instructor_action" sequence="30"/>
       
    </data>
 </odoo>

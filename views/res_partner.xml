@@ -1,0 +1,63 @@
+<odoo>
+   <data>
+      <!-- res.partner inherit form view -->
+      <record id="academy_res_partner_inherit_view_id" model="ir.ui.view">
+         <field name="name">academy.res.partner.inherit.view.form</field>
+         <field name="model">res.partner</field>
+         <field name="inherit_id" ref="base.view_partner_form"/>
+         <field name="arch" type="xml">
+            <!-- Add your xpath here -->
+            <field name="vat" position="after">
+               <field name="is_student"/>
+               <field name="is_instructor"/>
+            </field>
+         </field>
+      </record>
+
+
+      <!-- STUDENT ACTIONS -->
+      <!-- res.parter action window -->
+      <record id="academy_student_action" model="ir.actions.act_window">
+         <field name="name">Student List</field>
+         <field name="type">ir.actions.act_window</field>
+         <field name="res_model">res.partner</field>
+         <field name="view_mode">tree,form</field>
+         <field name="context">
+            {
+               'search_default_student': 1,
+               'default_is_student': True,
+            }
+         </field>
+      </record>
+      <!-- INSTRUCTOR ACTIONS -->
+      <!-- res.parter action window -->
+      <record id="academy_instructor_action" model="ir.actions.act_window">
+         <field name="name">Instructor List</field>
+         <field name="type">ir.actions.act_window</field>
+         <field name="res_model">res.partner</field>
+         <field name="view_mode">tree,form</field>
+         <field name="context">
+            {
+               'search_default_instructor': 1,
+               'default_is_instructor': True,
+            }
+         </field>
+      </record>
+
+
+      <!-- res.partner inherit search view -->
+      <record id="res_partner_seacrh_inherit" model="ir.ui.view">
+         <field name="name">res.partner.inherit.view.search</field>
+         <field name="model">res.partner</field>
+         <field name="inherit_id" ref="base.view_res_partner_filter"/>
+         <field name="arch" type="xml">
+            <!-- Add your xpath here -->
+            <field name="parent_id" position="after">
+               <filter string="Student" name="student" domain="[('is_student','=',True)]"/>
+               <filter string="Instructor" name="instructor" domain="[('is_instructor','=',True)]"/>
+            </field>
+         </field>
+      </record>
+
+   </data>
+</odoo>

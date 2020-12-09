@@ -13,5 +13,6 @@
       'views/academy_menuitem.xml',
       'views/academy_course_view.xml',
       'views/academy_course_category_view.xml',
+      'views/res_partner.xml',
    ],
 }
