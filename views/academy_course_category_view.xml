@@ -17,6 +17,9 @@
          </field>
       </record>
 
+      <!-- ACTION MENUS -->
+      <menuitem id="academy_course_category_menu_act" name="Course Category" parent="menu_academy_master_data" action="action_academy_course_category" sequence="20"/>
+
       <!-- TREE VIEW -->
       <record id="academy_course_category_view_tree" model="ir.ui.view">
          <field name="name">academy.course.category.view.tree</field>
@@ -30,7 +33,6 @@
             </tree>
          </field>
       </record>
-
       <!-- FORM VIEW -->
       <record id="academy_course_category_view_form" model="ir.ui.view">
          <field name="name">academy.course.category.view.form</field>
@@ -66,7 +68,6 @@
             </form>
          </field>
       </record>
-
       <!-- SEARCH VIEW -->
       <record id="academy_course_category_view_search" model="ir.ui.view">
          <field name="name">academy.course.category.view.search</field>

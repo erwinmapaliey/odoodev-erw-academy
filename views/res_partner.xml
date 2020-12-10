@@ -44,6 +44,9 @@
          </field>
       </record>
 
+      <!-- ACTION MENUS -->
+      <menuitem id="academy_instructor_menu_act" name="Instructor" parent="menu_academy_master_data" action="academy_instructor_action" sequence="30"/>
+      <menuitem id="academy_student_menu_act" name="Student" parent="menu_academy_master_data" action="academy_student_action" sequence="40"/>
 
       <!-- res.partner inherit search view -->
       <record id="res_partner_seacrh_inherit" model="ir.ui.view">
