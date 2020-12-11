@@ -1,0 +1,53 @@
+<odoo>
+   <data>
+
+      <!-- Session Action Windows -->
+      <record id="action_academy_session" model="ir.actions.act_window">
+         <field name="name">Course Session</field>
+         <field name="type">ir.actions.act_window</field>
+         <field name="res_model">academy.session</field>
+         <field name="view_mode">tree,form</field>
+      </record>
+
+      <!-- This Menu Item must have a parent and an action -->
+      <menuitem id="academy_session_menu_act" name="Course Session" parent="menu_academy" action="action_academy_session" sequence="2"/>
+
+      <!-- TREE VIEW -->
+      <record id="academy_session_view_tree" model="ir.ui.view">
+         <field name="name">academy.session.view.tree</field>
+         <field name="model">academy.session</field>
+         <field name="arch" type="xml">
+            <tree>
+               <field name="name"/>
+               <field name="course_id"/>
+               <field name="instructor_id"/>
+               <field name="session_date"/>
+               <field name="min_attendee"/>
+            </tree>
+         </field>
+      </record>
+      <!-- FORM VIEW -->
+      <record id="academy_session_view_form" model="ir.ui.view">
+         <field name="name">academy.session.view.form</field>
+         <field name="model">academy.session</field>
+         <field name="arch" type="xml">
+            <form string="">
+               <sheet>
+                  <group>
+                     <group>
+                        <field name="name"/>
+                        <field name="course_id"/>
+                        <field name="instructor_id"/>
+                     </group>
+                     <group>
+                        <field name="session_date"/>
+                        <field name="min_attendee"/>
+                     </group>
+                  </group>
+               </sheet>
+            </form>
+         </field>
+      </record>
+   
+   </data>
+</odoo>
