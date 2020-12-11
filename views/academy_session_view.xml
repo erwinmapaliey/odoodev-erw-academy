@@ -48,6 +48,24 @@
             </form>
          </field>
       </record>
-   
+      <!-- SEARCH VIEW -->
+      <record id="academy_session_view_search" model="ir.ui.view">
+         <field name="name">academy.session.view.search</field>
+         <field name="model">academy.session</field>
+         <field name="arch" type="xml">
+            <search string="Search Description">
+               <field name="name"/>
+               <field name="course_id"/>
+               <field name="instructor_id"/>
+               
+               <group string="Group By">
+                  <filter name="group_by_course" string="Course" context="{'group_by': 'course_id'}"/>
+                  <filter name="group_by_instructor" string="Instructor" context="{'group_by': 'instructor_id'}"/>     
+               </group>
+
+            </search>
+         </field>
+      </record>
+
    </data>
 </odoo>
