@@ -10,10 +10,13 @@ class Session(models.Model):
    session_date  = fields.Datetime( string = 'Session Date', default = fields.Datetime.now(), required = True)
    min_attendee  = fields.Integer( string = 'Minimum Attendee' )
    description   = fields.Text( string = 'Description' )
+   attendee_ids  = fields.One2many( comodel_name = 'academy.session.attendee', inverse_name = 'session_id', string = 'Attendee')
+   
    
 class SessionAttendee(models.Model):
    _name        = 'academy.session.attendee'
    _description = 'Course Session Attendee Data'
 
-   name        = fields.Char( string = '' )
-   student_id  = fields.Many2one( comodel_name = 'res.partner', string = 'Student', domain = "[('is_student', '=', 'True')]" )
+   name       = fields.Char( string = 'Student Name' )
+   student_id = fields.Many2one( comodel_name = 'res.partner', string = 'Student', domain = "[('is_student', '=', 'True')]" )
+   session_id = fields.Many2one( comodel_name = 'academy.session', string = 'Course Session' )
