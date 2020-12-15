@@ -32,7 +32,6 @@
       <menuitem id="academy_instructor_menu_act" name="Instructor" parent="menu_academy_master_data" action="academy_instructor_action" sequence="30"/>
       <menuitem id="academy_student_menu_act" name="Student" parent="menu_academy_master_data" action="academy_student_action" sequence="40"/>
 
-
       <!-- RES.PARTNER INHERIT - FORM VIEW -->
       <record id="academy_res_partner_inherit_view_id" model="ir.ui.view">
          <field name="name">academy.res.partner.inherit.view.form</field>

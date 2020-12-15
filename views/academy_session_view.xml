@@ -41,6 +41,14 @@
                         <field name="min_attendee"/>
                      </group>
                   </group>
+
+                  <notebook>
+                     <page name="description" string="General Information">
+                        <group>
+                           <field name="description"/>
+                        </group>
+                     </page>
+                  </notebook>
                </sheet>
             </form>
          </field>

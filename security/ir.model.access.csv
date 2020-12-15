@@ -2,3 +2,4 @@ id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 access_academy_course,access_academy_course,model_academy_course,,1,1,1,1
 access_academy_course_category,access_academy_course_category,model_academy_course_category,,1,1,1,1
 access_academy_session,access_academy_session,model_academy_session,,1,1,1,1
+access_academy_session_attendee,access_adademy_session_attendee,model_academy_session_attendee,,1,1,1,1
