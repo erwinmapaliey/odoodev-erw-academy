@@ -1,16 +1,13 @@
 <odoo>
    <data>
 
-      <!-- Course List action window -->
+      <!-- Course List Action Windows -->
       <record id="action_academy_course" model="ir.actions.act_window">
          <field name="name">Course List</field>
          <field name="type">ir.actions.act_window</field>
          <field name="res_model">academy.course</field>
          <field name="view_mode">tree,form</field>
       </record>
-
-      <!-- ACTION MENUS -->
-      <menuitem id="academy_course_menu_act" name="Course List" parent="menu_academy_master_data" action="action_academy_course" sequence="10"/>
       
       <!-- TREE VIEW -->
       <record id="academy_course_view_tree" model="ir.ui.view">
@@ -74,6 +71,9 @@
             </search>
          </field>
       </record>
+
+      <!-- Course List Action Menu -->
+      <menuitem id="academy_course_menu_act" name="Course List" parent="menu_academy_master_data" action="action_academy_course" sequence="10"/>
 
    </data>
 </odoo>

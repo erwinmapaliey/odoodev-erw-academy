@@ -1,10 +1,10 @@
 <odoo>
    <data>
-
-      <!-- This Menu Item will appear in the Upper bar, that's why It needs NO parent or action -->
-      <menuitem id="menu_academy" name="Academy" sequence="10 "/>
       
-      <!-- This Menu Item Must have a parent -->
+      <!-- ROOT Menu -->
+      <menuitem id="menu_academy" name="Academy" sequence="10 "/>
+
+      <!-- Master Data Sub Menu -->
       <menuitem id="menu_academy_master_data" name="Master Data" parent="menu_academy" sequence="1"/>
 
    </data>

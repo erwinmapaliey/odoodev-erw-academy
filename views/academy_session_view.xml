@@ -9,9 +9,6 @@
          <field name="view_mode">tree,form</field>
       </record>
 
-      <!-- This Menu Item must have a parent and an action -->
-      <menuitem id="academy_session_menu_act" name="Course Session" parent="menu_academy" action="action_academy_session" sequence="2"/>
-
       <!-- TREE VIEW -->
       <record id="academy_session_view_tree" model="ir.ui.view">
          <field name="name">academy.session.view.tree</field>
@@ -66,6 +63,9 @@
             </search>
          </field>
       </record>
+
+       <!-- Session Action Menu & Sub Menu -->
+      <menuitem id="academy_session_menu_act" name="Course Session" parent="menu_academy" action="action_academy_session" sequence="2"/>
 
    </data>
 </odoo>
