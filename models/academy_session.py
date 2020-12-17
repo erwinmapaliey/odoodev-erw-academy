@@ -10,13 +10,23 @@ class Session(models.Model):
    session_date  = fields.Datetime( string = 'Session Date', default = fields.Datetime.now(), required = True)
    min_attendee  = fields.Integer( string = 'Minimum Attendee' )
    description   = fields.Text( string = 'Description' )
-   attendee_ids  = fields.One2many( comodel_name = 'academy.session.attendee', inverse_name = 'session_id', string = 'Attendee')
+   attendee_ids  = fields.One2many( comodel_name = 'academy.session.attendee', inverse_name = 'session_id', string = 'Attendee')   
+   taken_seats   = fields.Float( compute = '_compute_taken_seat', string = 'Taken Seats')
    
-   
+   @api.depends('min_attendee', 'attendee_ids')
+   def _compute_taken_seat(self):
+      for record in self:
+         if not record.min_attendee:
+            record.taken_seats = 0.0
+         else:
+            record.taken_seats = 100.0 * len(record.attendee_ids) / record.min_attendee
+
 class SessionAttendee(models.Model):
    _name        = 'academy.session.attendee'
    _description = 'Course Session Attendee Data'
 
-   name       = fields.Char( string = 'Student Name' )
+   name       = fields.Char( string = 'No. Pendaftaran' )
    student_id = fields.Many2one( comodel_name = 'res.partner', string = 'Student', domain = "[('is_student', '=', 'True')]" )
+   reg_date   = fields.Datetime( string = 'Registation Date', default = fields.Datetime.now() )
    session_id = fields.Many2one( comodel_name = 'academy.session', string = 'Course Session' )
+   remarks    = fields.Char( string = 'Remarks' )
