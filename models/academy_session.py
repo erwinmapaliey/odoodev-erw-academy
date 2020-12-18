@@ -11,7 +11,7 @@ class Session(models.Model):
    min_attendee  = fields.Integer( string = 'Minimum Attendee' )
    description   = fields.Text( string = 'Description' )
    attendee_ids  = fields.One2many( comodel_name = 'academy.session.attendee', inverse_name = 'session_id', string = 'Attendee')   
-   taken_seats   = fields.Float( compute = '_compute_taken_seat', string = 'Taken Seats')
+   taken_seats   = fields.Float( compute = '_compute_taken_seat', string = 'Taken Seats', store = True)
    
    @api.depends('min_attendee', 'attendee_ids')
    def _compute_taken_seat(self):
@@ -20,6 +20,23 @@ class Session(models.Model):
             record.taken_seats = 0.0
          else:
             record.taken_seats = 100.0 * len(record.attendee_ids) / record.min_attendee
+   
+   @api.onchange('min_attendee', 'attendee_ids')
+   def _verify_seats_attendee(self):
+      if self.min_attendee < 0:
+         return {
+            'warning':{
+               'title'  : "Salah Data!",
+               'message': "Min Attendee tidak boleh kurang dari O", 
+            },
+         }
+      if self.min_attendee < len(self.attendee_ids):
+         return {
+            'warning' : {
+               'title'  : "Too many attendees",
+               'message': "Increase minimal attendee or remove excess attendees",
+            }
+         }
 
 class SessionAttendee(models.Model):
    _name        = 'academy.session.attendee'

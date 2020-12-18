@@ -20,7 +20,7 @@
                <field name="instructor_id"/>
                <field name="session_date"/>
                <field name="min_attendee"/>
-               <field name="taken_seats"/>
+               <field name="taken_seats" widget="progressbar"/>
             </tree>
          </field>
       </record>
@@ -43,7 +43,7 @@
                      <group>
                         <field name="session_date"/>
                         <field name="min_attendee"/>
-                        <field name="taken_seats"/>
+                        <field name="taken_seats" widget="progressbar"/>
                      </group>
                   </group>
 
