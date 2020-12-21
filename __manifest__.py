@@ -15,5 +15,6 @@
       'views/academy_course_category_view.xml',
       'views/academy_session_view.xml',
       'views/res_partner.xml',
+      'wizard/academy_attendee_wizard_view.xml',
    ],
 }

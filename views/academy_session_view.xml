@@ -33,8 +33,7 @@
             <form string="">
                <header>
                   <button type="object" name="action_valid" string="Valid" states="draft" class="oe_highlight" />
-                  <button type="object" name="action_cancel" string="Cancel" states="valid" class="oe_highlight" />
-                  <button type="object" name="action_reset" string="Reset To Draft" states="cancel" class="oe_highlight" />
+                  <button type="object" name="action_reset" string="Reset To Draft" states="valid" class="oe_highlight" />
 
                   <field name="state" widget="statusbar" statusbar_visible="draft,valid" />
                </header>
@@ -87,6 +86,8 @@
                <field name="course_id"/>
                <field name="instructor_id"/>
                
+               <filter name="filter_state" string="Valid" domain="[('state', '=', 'valid')]"/>
+
                <group string="Group By">
                   <filter name="group_by_course" string="Course" context="{'group_by': 'course_id'}"/>
                   <filter name="group_by_instructor" string="Instructor" context="{'group_by': 'instructor_id'}"/>     

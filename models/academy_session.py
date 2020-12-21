@@ -16,8 +16,6 @@ class Session(models.Model):
    state         = fields.Selection( string = 'State', selection = [('draft', 'Draft'), ('valid', 'Valid'), ('cancel', 'Cancel'),], readonly = True, required = True, default = 'draft')
    email         = fields.Char( string = 'Email', related = "instructor_id.email", store = True)
 
-   def action_cancel(self):
-      self.write({'state': 'cancel'})
    def action_valid(self):
       self.write({'state': 'valid'})
    def action_reset(self):
@@ -39,8 +37,8 @@ class Session(models.Model):
 
    @api.onchange('min_attendee', 'attendee_ids')
    def _verify_seats_attendee(self):
-      if self.min_attendee <= 0:
-         raise ValidationError("Min Attendee tidak boleh kurang dari atau sama dengan 0")
+      if self.min_attendee < 0:
+         raise ValidationError("Min Attendee tidak boleh kurang dari 0")
       if self.min_attendee < len(self.attendee_ids):
          return {
             'warning' : {
