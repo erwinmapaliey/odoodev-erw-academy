@@ -39,13 +39,8 @@ class Session(models.Model):
 
    @api.onchange('min_attendee', 'attendee_ids')
    def _verify_seats_attendee(self):
-      if self.min_attendee < 0:
-         return {
-            'warning':{
-               'title'  : "Salah Data!",
-               'message': "Min Attendee tidak boleh kurang dari O", 
-            },
-         }
+      if self.min_attendee <= 0:
+         raise ValidationError("Min Attendee tidak boleh kurang dari atau sama dengan 0")
       if self.min_attendee < len(self.attendee_ids):
          return {
             'warning' : {
