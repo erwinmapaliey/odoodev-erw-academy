@@ -32,22 +32,25 @@
          <field name="arch" type="xml">
             <form string="">
                <header>
-                  <button type="object" name="action_valid" string="Valid" />
+                  <button type="object" name="action_valid" string="Valid" states="draft" class="oe_highlight" />
+                  <button type="object" name="action_cancel" string="Cancel" states="valid" class="oe_highlight" />
+                  <button type="object" name="action_reset" string="Reset To Draft" states="cancel" class="oe_highlight" />
+
                   <field name="state" widget="statusbar" statusbar_visible="draft,valid" />
                </header>
                <sheet>
                   <div class="oe_title">
                      <label for="name" class="oe_edit_only"/>
-                     <h1><field name="name"/></h1>
+                     <h1><field name="name" attrs="{'readonly': [('state', '=', 'valid')]}"/></h1>
                   </div>
                   <group>
                      <group>
-                        <field name="course_id"/>
-                        <field name="instructor_id"/>
+                        <field name="course_id" attrs="{'readonly': [('state', '=', 'valid')]}"/>
+                        <field name="instructor_id" attrs="{'readonly': [('state', '=', 'valid')]}"/>
                      </group>
                      <group>
-                        <field name="session_date"/>
-                        <field name="min_attendee"/>
+                        <field name="session_date" attrs="{'readonly': [('state', '=', 'valid')]}"/>
+                        <field name="min_attendee" attrs="{'readonly': [('state', '=', 'valid')]}"/>
                         <field name="taken_seats" widget="progressbar"/>
                      </group>
                   </group>

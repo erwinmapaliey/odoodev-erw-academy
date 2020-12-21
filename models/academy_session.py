@@ -14,8 +14,12 @@ class Session(models.Model):
    taken_seats   = fields.Float( compute = '_compute_taken_seat', string = 'Taken Seats', store = True)
    state         = fields.Selection( string = 'State', selection = [('draft', 'Draft'), ('valid', 'Valid'), ('cancel', 'Cancel'),], readonly = True, required = True, default = 'draft')
    
+   def action_cancel(self):
+      self.write({'state': 'cancel'})
    def action_valid(self):
       self.write({'state': 'valid'})
+   def action_reset(self):
+      self.write({'state': 'draft'})
 
    @api.depends('min_attendee', 'attendee_ids')
    def _compute_taken_seat(self):
