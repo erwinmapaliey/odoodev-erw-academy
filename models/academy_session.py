@@ -1,4 +1,5 @@
 from odoo import api, fields, models
+from odoo.exceptions import UserError, ValidationError
 
 class Session(models.Model):
    _name        = 'academy.session'
@@ -13,7 +14,8 @@ class Session(models.Model):
    attendee_ids  = fields.One2many( comodel_name = 'academy.session.attendee', inverse_name = 'session_id', string = 'Attendee')   
    taken_seats   = fields.Float( compute = '_compute_taken_seat', string = 'Taken Seats', store = True)
    state         = fields.Selection( string = 'State', selection = [('draft', 'Draft'), ('valid', 'Valid'), ('cancel', 'Cancel'),], readonly = True, required = True, default = 'draft')
-   
+   email         = fields.Char( string = 'Email', related = "instructor_id.email", store = True)
+
    def action_cancel(self):
       self.write({'state': 'cancel'})
    def action_valid(self):
@@ -29,6 +31,12 @@ class Session(models.Model):
          else:
             record.taken_seats = 100.0 * len(record.attendee_ids) / record.min_attendee
    
+   def unlink(self):
+      for record in self:
+         if record.state in ['valid', 'cancel']:
+            raise UserError("Tidak bisa hapus data Valid dan Cancel!!")
+      return super(Session, self).unlink()
+
    @api.onchange('min_attendee', 'attendee_ids')
    def _verify_seats_attendee(self):
       if self.min_attendee < 0:

@@ -47,6 +47,7 @@
                      <group>
                         <field name="course_id" attrs="{'readonly': [('state', '=', 'valid')]}"/>
                         <field name="instructor_id" attrs="{'readonly': [('state', '=', 'valid')]}"/>
+                        <field name="email"/>
                      </group>
                      <group>
                         <field name="session_date" attrs="{'readonly': [('state', '=', 'valid')]}"/>
