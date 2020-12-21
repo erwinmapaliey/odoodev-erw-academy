@@ -12,7 +12,11 @@ class Session(models.Model):
    description   = fields.Text( string = 'Description' )
    attendee_ids  = fields.One2many( comodel_name = 'academy.session.attendee', inverse_name = 'session_id', string = 'Attendee')   
    taken_seats   = fields.Float( compute = '_compute_taken_seat', string = 'Taken Seats', store = True)
+   state         = fields.Selection( string = 'State', selection = [('draft', 'Draft'), ('valid', 'Valid'), ('cancel', 'Cancel'),], readonly = True, required = True, default = 'draft')
    
+   def action_valid(self):
+      self.write({'state': 'valid'})
+
    @api.depends('min_attendee', 'attendee_ids')
    def _compute_taken_seat(self):
       for record in self:

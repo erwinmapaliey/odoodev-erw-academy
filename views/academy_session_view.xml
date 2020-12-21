@@ -21,6 +21,7 @@
                <field name="session_date"/>
                <field name="min_attendee"/>
                <field name="taken_seats" widget="progressbar"/>
+               <field name="state"/>
             </tree>
          </field>
       </record>
@@ -30,6 +31,10 @@
          <field name="model">academy.session</field>
          <field name="arch" type="xml">
             <form string="">
+               <header>
+                  <button type="object" name="action_valid" string="Valid" />
+                  <field name="state" widget="statusbar" statusbar_visible="draft,valid" />
+               </header>
                <sheet>
                   <div class="oe_title">
                      <label for="name" class="oe_edit_only"/>
