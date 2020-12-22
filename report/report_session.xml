@@ -1,0 +1,56 @@
+<odoo>
+   <data>
+      <record id="report_academy_session" model="ir.actions.report">
+         <field name="name">Print Report Session</field>
+         <field name="model">academy.session</field>
+         <field name="report_type">qweb-pdf</field>
+         <field name="report_name">erw_academy.report_session_view</field>
+         <field name="report_file">erw_academy.report_session_view</field>
+         <field name="binding_model_id" ref="model_academy_session"/>
+         <field name="binding_type">report</field>
+      </record>
+      
+      <template id="report_session_view">
+         <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="doc">
+               <t t-call="web.external_layout">
+                  <div class="page">
+                     
+                     <h1 t-field="doc.name"></h1>
+                     
+                     <div class="row" style="font-family:Roboto;">
+                        <div class="col-2"><strong>Course</strong></div>
+                        <div class="col-7">: <span t-field="doc.course_id" style="color:red;"></span></div>
+                     </div>
+                     <div class="row">
+                        <div class="col-2"><strong>Instructor</strong></div>
+                        <div class="col-7">: <span t-field="doc.instructor_id"></span></div>
+                     </div>
+
+                     <h3>Attendees:</h3>
+                     <table class="table table-stripped">
+                        <thead class="thead-dark">
+                           <tr>
+                              <th style="font-weight:bold;">No. Pendaftaran</th>
+                              <th style="font-weight:bold;">Nama</th>
+                              <th style="font-weight:bold;">Registration Date</th>
+                           </tr>
+                        </thead>
+                        <tbody>   
+                           <t t-foreach="doc.attendee_ids" t-as="attd">
+                              <tr>
+                                 <td><span t-field="attd.name"/></td>
+                                 <td><span t-field="attd.student_id"/></td>
+                                 <td><span t-field="attd.reg_date"/></td>
+                              </tr>
+                           </t>
+                        </tbody>
+                     </table>
+                  </div>
+               </t>
+            </t>
+         </t>
+      </template>
+
+   </data>
+</odoo>
